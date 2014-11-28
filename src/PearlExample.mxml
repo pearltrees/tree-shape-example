@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"	
+                xmlns:ravis="org.un.cava.birdeye.ravis.graphLayout.visual.*"	
+                creationComplete="init();" width="100%" height="100%"  layout="absolute">
+   
+   <mx:Script>
+      <![CDATA[
+         import layout.ConcentricRadialLayout;
+         
+         import mx.controls.Button;
+         
+         import org.un.cava.birdeye.ravis.graphLayout.data.Graph;
+         import org.un.cava.birdeye.ravis.graphLayout.data.INode;
+         import org.un.cava.birdeye.ravis.graphLayout.layout.HierarchicalLayouter;
+         import org.un.cava.birdeye.ravis.graphLayout.visual.IVisualNode;
+         import org.un.cava.birdeye.ravis.graphLayout.visual.edgeRenderers.BaseEdgeRenderer;
+         
+         private var  graph:Graph;
+         
+         private function init():void {
+            initData();
+         } 
+         
+         private function display():void {
+            var newLayouter: HierarchicalLayouter= new HierarchicalLayouter(vgraph);
+            vgraph.layouter = newLayouter;
+            newLayouter.autoFitEnabled = true;
+            var startRoot: IVisualNode = graph.nodeByStringId("1").vnode;
+            vgraph.currentRootVNode = startRoot;
+            vgraph.draw();
+         }
+         
+         private function initData():void {
+            graph = new org.un.cava.birdeye.ravis.graphLayout.data.Graph("XMLAsDocsGraph",false,xmldata);
+            vgraph.graph = graph;
+            var layouter:ConcentricRadialLayout = new ConcentricRadialLayout(vgraph);
+            layouter.disableAnimation=false;
+            layouter.autoFitEnabled=false;
+            layouter.linkLength = 100;
+            layouter.setAngularBounds(180, 360);
+            layouter.minNodeSeparation = 88;
+            vgraph.layouter = layouter;
+            vgraph.maxVisibleDistance = 1000;
+            var startRoot:IVisualNode = graph.nodeByStringId("1").vnode;
+            vgraph.displayEdgeLabels = false;
+            vgraph.currentRootVNode = startRoot;
+            var initDone:Boolean = true;
+            vgraph.draw();
+         }
+      ]]>
+   </mx:Script>
+   
+   <ravis:VisualGraph 
+      id="vgraph" width="100%" height="100%" backgroundColor="#FFFFFF" alpha="1"
+      itemRenderer="nodeRenderer" 	
+      visibilityLimitActive="true"
+      x="0" y="0">
+   </ravis:VisualGraph>
+   <mx:XML id="xmldata" source="data/graph.xml" />
+</mx:Application>
+

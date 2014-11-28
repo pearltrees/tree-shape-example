@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+           xmlns:local="org.un.cava.birdeye.ravis.assets.icons.primitives.*" 
+           creationComplete="setNodeCircle()"
+           >
+   
+   <mx:VBox verticalAlign="bottom" horizontalAlign="center" verticalGap="0" >
+      <mx:Spacer height="11" />
+      <local:Circle id="circle" />
+      <mx:Text id="nodeText" text="{this.data.data.@name}" width="75" height="20"   textAlign="center" fontSize="10" />
+   </mx:VBox>
+   
+   <mx:Script>
+      <![CDATA[
+         import mx.controls.Image;
+         private function setNodeCircle():void {
+            var nodeColor:int = this.data.data.@nodeColor;
+            var nodeSize:int = this.data.data.@nodeSize;
+            
+            circle.color=nodeColor;
+            circle.width=nodeSize;
+            circle.height=nodeSize;
+            if (this.data.data.@id == 1) {
+               circle.addChild(getImage(nodeSize, getForegroundSelectedTreeAsset()));
+            }
+            else {
+               circle.addChild(getImage(nodeSize, getForegroundSelectedAsset()));
+            }
+         }
+         
+         private function getImage(nodeSize:int, imageClass:Class): Image {
+            var foregroundSelected:Image = new Image();
+            foregroundSelected.smoothBitmapContent=true;
+            foregroundSelected.source = imageClass;
+            foregroundSelected.width = nodeSize + 4;
+            foregroundSelected.height = nodeSize + 4;
+            foregroundSelected.x = -2;
+            foregroundSelected.y = -2
+            return foregroundSelected;
+         }
+         
+         private function getForegroundSelectedTreeAsset():Class {
+            return PearlAssets.PEARL_FOREGROUND_SELECTED_TREE_PNG;
+         }
+         
+         private function getForegroundSelectedAsset():Class {
+            return PearlAssets.PEARL_FOREGROUND_SELECTED_PNG;
+         }
+      ]]>
+   </mx:Script>	
+</mx:Canvas>

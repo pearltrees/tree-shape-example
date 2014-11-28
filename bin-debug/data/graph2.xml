@@ -1,0 +1,25 @@
+<graph>
+<Node id="1" name="Restaurant" nodeColor="0xa721a4" nodeSize="80" nodeClass="earth" />
+
+<Node id="2" name="Communal" nodeColor="0x517e29" nodeSize="60" nodeClass="leaf"/>
+<Edge fromID="1" toID="2" color="0x000000" />
+		<Node id="3" name="Bee" nodeColor="0x4fe2c2" nodeSize="60" nodeClass="leaf" />
+		<Edge fromID="2" toID="3" color="0x000000" />
+		<Node id="4" name="Organic" nodeColor="0x4fe2c2" nodeSize="60" nodeClass="leaf" />
+		<Edge fromID="2" toID="4" color="0x000000" />
+      <Node id="5" name="Organic" nodeColor="0x4fe2c2" nodeSize="60" nodeClass="leaf" />
+      <Edge fromID="2" toID="5" color="0x000000" />
+      <Node id="6" name="Organic" nodeColor="0x4fe2c2" nodeSize="60" nodeClass="leaf" />
+      <Edge fromID="2" toID="6" color="0x000000" />
+         <Node id="7" name="Bee" nodeColor="0xe06fa5" nodeSize="60" nodeClass="leaf" />
+         <Edge fromID="6" toID="7" color="0x000000" />
+         <Node id="8" name="Bee" nodeColor="0xe06fa5" nodeSize="60" nodeClass="leaf" />
+         <Edge fromID="6" toID="8" color="0x000000" />
+            <Node id="9" name="Bee" nodeColor="0x17f658" nodeSize="60" nodeClass="leaf" />
+            <Edge fromID="8" toID="9" color="0x000000" />
+            <Node id="10" name="Bee" nodeColor="0x17f658" nodeSize="60" nodeClass="leaf" />
+            <Edge fromID="8" toID="10" color="0x000000" />
+            <Node id="11" name="Bee" nodeColor="0x17f658" nodeSize="60" nodeClass="leaf" />
+            <Edge fromID="8" toID="11" color="0x000000" />
+
+</graph>
